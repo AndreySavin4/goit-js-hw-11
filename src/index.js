@@ -1,13 +1,10 @@
 import MarkupPage from './class-page';
 import lodash from 'lodash.throttle';
-const refs = {
-  onForm: document.querySelector('form.search-form'),
-  galleryList: document.querySelector('.gallery'),
-};
 
-const { onForm, galleryList } = refs;
+form = document.querySelector('form#search-form');
+galleryList = document.querySelector('.gallery');
 
-onForm.addEventListener('submit', onGalleryPage);
+form.addEventListener('submit', onGalleryPage);
 window.addEventListener(
   'scroll',
   lodash(() => {
@@ -22,6 +19,7 @@ const markupPage = new MarkupPage();
 
 function onGalleryPage(e) {
   e.preventDefault();
+
   markupPage.query = e.target.elements.searchQuery.value.trim();
   if (markupPage.query === '') {
     return alert('Пустая строка!');

@@ -5,7 +5,9 @@ const refs = {
   galleryList: document.querySelector('.gallery'),
 };
 
-refs.onForm.addEventListener('submit', onGalleryPage);
+const { onForm, galleryList } = refs;
+
+onForm.addEventListener('submit', onGalleryPage);
 window.addEventListener(
   'scroll',
   lodash(() => {
@@ -24,7 +26,7 @@ function onGalleryPage(e) {
   if (markupPage.query === '') {
     return alert('Пустая строка!');
   }
-  refs.galleryList.innerHTML = '';
+  galleryList.innerHTML = '';
   markupPage.resetPage();
   markupPage.cards();
 }

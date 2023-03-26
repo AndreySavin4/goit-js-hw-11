@@ -31,7 +31,7 @@ export default class MarkupPage {
     const createCards = gallery.hits.map(card => {
       return this.onGallery(card);
     });
-    refs.galleryList.insertAdjacentHTML('beforeend', createCards.join(''));
+    galleryList.insertAdjacentHTML('beforeend', createCards.join(''));
     this.addPage();
     if (gallery.hits.length === 0) {
       Notify.info("We're sorry, but you've reached the end of search results.");
@@ -61,7 +61,7 @@ export default class MarkupPage {
     </div>
   </div>
       `;
-    return refs.galleryList.insertAdjacentHTML('beforeend', markup);
+    return galleryList.insertAdjacentHTML('beforeend', markup);
   }
 
   addPage() {

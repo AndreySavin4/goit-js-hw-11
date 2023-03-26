@@ -1,11 +1,10 @@
 import MarkupPage from './class-page';
 import lodash from 'lodash.throttle';
 
-form = document.querySelector('.search-form');
+onForm = document.querySelector('form.search-form');
 loadMore = document.querySelector('.load-more');
 galleryList = document.querySelector('.gallery');
-
-form.addEventListener('submit', onGalleryPage);
+onForm.addEventListener('submit', onGalleryPage);
 window.addEventListener(
   'scroll',
   lodash(() => {

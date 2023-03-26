@@ -1,8 +1,11 @@
 import MarkupPage from './class-page';
 import lodash from 'lodash.throttle';
 
-form = document.querySelector('form#search-form');
-galleryList = document.querySelector('.gallery');
+const refs = {
+  form: document.querySelector('form#search-form'),
+  galleryList: document.querySelector('.gallery'),
+};
+const { form, galleryList } = refs;
 
 form.addEventListener('submit', onGalleryPage);
 window.addEventListener(

@@ -28,7 +28,6 @@ export default class MarkupPage {
         'Sorry, there are no images matching your search query. Please try again.'
       );
     }
-
     const createCards = gallery.hits.map(card => {
       return this.onGallery(card);
     });
@@ -38,6 +37,7 @@ export default class MarkupPage {
       Notify.info("We're sorry, but you've reached the end of search results.");
       return;
     }
+    return;
   }
 
   onGallery(card) {

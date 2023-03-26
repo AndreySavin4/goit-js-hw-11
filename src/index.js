@@ -1,7 +1,7 @@
 import MarkupPage from './class-page';
 import lodash from 'lodash.throttle';
 
-form = document.querySelector('form#search-form');
+form = document.querySelector('.search-form');
 loadMore = document.querySelector('.load-more');
 galleryList = document.querySelector('.gallery');
 
@@ -20,7 +20,6 @@ const markupPage = new MarkupPage();
 
 function onGalleryPage(e) {
   e.preventDefault();
-
   markupPage.query = e.target.elements.searchQuery.value.trim();
   if (markupPage.query === '') {
     return alert('Пустая строка!');

@@ -2,9 +2,9 @@ import MarkupPage from './class-page';
 import lodash from 'lodash.throttle';
 const refs = {
   onForm: document.querySelector('form.search-form'),
+  galleryList: document.querySelector('.gallery'),
 };
 
-galleryList = document.querySelector('.gallery');
 refs.onForm.addEventListener('submit', onGalleryPage);
 window.addEventListener(
   'scroll',
@@ -24,7 +24,7 @@ function onGalleryPage(e) {
   if (markupPage.query === '') {
     return alert('Пустая строка!');
   }
-  galleryList.innerHTML = '';
+  refs.galleryList.innerHTML = '';
   markupPage.resetPage();
   markupPage.cards();
 }

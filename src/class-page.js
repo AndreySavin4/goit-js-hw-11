@@ -61,7 +61,7 @@ export default class MarkupPage {
     </div>
   </div>
       `;
-    return galleryList.insertAdjacentHTML('beforeend', markup);
+    return refs.galleryList.insertAdjacentHTML('beforeend', markup);
   }
 
   addPage() {

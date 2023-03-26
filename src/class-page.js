@@ -32,7 +32,7 @@ export default class MarkupPage {
     const createCards = gallery.hits.map(card => {
       return this.onGallery(card);
     });
-    galleryList.insertAdjacentHTML('beforeend', createCards.join(''));
+    refs.galleryList.insertAdjacentHTML('beforeend', createCards.join(''));
     this.addPage();
     if (gallery.hits.length === 0) {
       Notify.info("We're sorry, but you've reached the end of search results.");

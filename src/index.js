@@ -1,6 +1,5 @@
 import MarkupPage from './class-page';
 import lodash from 'lodash.throttle';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 form = document.querySelector('form#search-form');
 loadMore = document.querySelector('.load-more');

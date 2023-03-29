@@ -1,33 +1,24 @@
-import MarkupPage from './class-page';
-import lodash from 'lodash.throttle';
-
-const refs = {
-  form: document.querySelector('form#search-form'),
-  galleryList: document.querySelector('.gallery'),
+import backend from './backend';
+export const refs = {
+  onForm: document.querySelector('form#search-form'),
+  allPictures: document.querySelector('.gallery'),
+  loadMore: document.querySelector('.load-more'),
 };
-const { form, galleryList } = refs;
 
-form.addEventListener('submit', onGalleryPage);
-window.addEventListener(
-  'scroll',
-  lodash(() => {
-    const loadingMore = document.documentElement.getBoundingClientRect();
-    if (loadingMore.bottom < document.documentElement.clientHeight + 50) {
-      markupPage.cards();
-    }
-  }, 300)
-);
+const { onForm, allPictures, loadMore } = refs;
+const markupPage = new backend();
 
-const markupPage = new MarkupPage();
+onForm.addEventListener('submit', onSubmit);
 
-function onGalleryPage(e) {
+loadMore.addEventListener('click', moreCards);
+
+async function onSubmit(e) {
   e.preventDefault();
-
-  markupPage.query = e.target.elements.searchQuery.value.trim();
-  if (markupPage.query === '') {
-    return alert('Пустая строка!');
-  }
-  galleryList.innerHTML = '';
+  markupPage.searchQuery = e.target.elements.searchQuery.value.trim();
   markupPage.resetPage();
-  markupPage.cards();
+  markupPage.onSearch();
+}
+
+function moreCards() {
+  markupPage.onSearch().then(createMarkup);
 }

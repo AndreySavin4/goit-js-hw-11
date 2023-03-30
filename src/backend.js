@@ -3,6 +3,7 @@ export default class BackendApi {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
+    this.cards = [];
   }
 
   async onSearch() {
@@ -15,17 +16,21 @@ export default class BackendApi {
       orientation: 'horizontal',
       safesearch: 'true',
       page: this.page,
-      per_page: 40,
+      per_page: 5,
     });
 
     try {
-      const request = await axios.get(`${URL}?${searchParams}`);
+      const response = await axios.get(`${URL}?${searchParams}`);
       this.addPage();
-      console.log(request.json());
-      // return await request.json();
+      this.cards = response.data.hits;
+      return this.cards;
     } catch (error) {
       console.log('ERROR:', error.message);
     }
+  }
+
+  getCards() {
+    return this.cards;
   }
 
   addPage() {
